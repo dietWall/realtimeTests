@@ -3,9 +3,9 @@ Several Scripts for Realtime testing a Kernel
 
 This Repo contains some scripts for realtime testing a kernel
 
-Dependencies:
-cyclictest
-gnuplot
+Dependencies (available as debian package):  
+cyclictest (debian: rt-tests)  
+gnuplot  
 
 Scripts:  
 sched_latency.sh  
