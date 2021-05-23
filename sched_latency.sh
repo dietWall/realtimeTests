@@ -21,7 +21,7 @@ do
 done
 
 # 1. Run cyclictest
-cyclictest -t${threads} -p${threadpriority} -l${loops} -i${interval} -c${clock} -m -h400 -q >${cyclictestoutputfile}
+cyclictest -t${threads} -p${threadpriority} -l${loops} -i${interval} -c${clock} -m -h400 -q -N | tee ${cyclictestoutputfile}
 
 
 
