@@ -1,17 +1,15 @@
 #!/bin/bash
 
 #parameters for testing:
-threads=4
 threadpriority=99
 loops=1000
 interval=100
 clock=CLOCK_REALTIME
-cyclictestoutputfile=test_output
+cyclictestoutputfile=cyclic_hist.txt
 
-while getopts t:p:l:i:c flag
+while getopts p:l:i:c:f: flag
 do
 	case "${flag}" in
-		t) threads=${OPTARG};;
 		p) threadpriority=${OPTARG};;
 		l) loops=${OPTARG};;
 		i) interval=${OPTARG};;
@@ -21,7 +19,7 @@ do
 done
 
 # 1. Run cyclictest
-cyclictest -t${threads} -p${threadpriority} -l${loops} -i${interval} -c${clock} -m -h400 -q -N | tee ${cyclictestoutputfile}
+cyclictest -t -p${threadpriority} -l${loops} -i${interval} -c${clock} -m -h20000 -q -N >${cyclictestoutputfile}
 
 
 

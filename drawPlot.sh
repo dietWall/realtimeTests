@@ -1,4 +1,5 @@
-cyclictestoutputfile=test_output
+#!/bin/bash
+cyclictestoutputfile=cyclic_hist.txt
 
 while getopts f flag
 do
@@ -14,7 +15,7 @@ max=`grep "Max Latencies" ${cyclictestoutputfile} | tr " " "\n" | sort -n | tail
 grep -v -e "^#" -e "^$" ${cyclictestoutputfile} | tr " " "\t" >histogram 
 
 #Set the number of cores, for example
-cores=$(lscpu | grep 'CPU(s):' | awk '{print $2}')
+cores=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $2}')
 
 echo "Calculation with Number of Cores: ${cores}"
 
@@ -28,9 +29,9 @@ done
 #Create plot command header
 echo -n -e "set title \"Latency plot\"\n\
 set terminal png\n\
-set xlabel \"Latency (us), max $max us\"\n\
+set xlabel \"Latency (ns), max $max ns\"\n\
 set logscale y\n\
-set xrange [0:400]\n\
+set xrange [1000:20000]\n\
 set yrange [0.8:*]\n\
 set ylabel \"Number of latency samples\"\n\
 set output \"plot.png\"\n\
