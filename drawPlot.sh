@@ -32,6 +32,7 @@ set terminal png\n\
 set xlabel \"Latency (ns), max $max ns\"\n\
 set logscale y\n\
 set xrange [1000:20000]\n\
+set xtics font \" ,6\"\n\
 set yrange [0.8:*]\n\
 set ylabel \"Number of latency samples\"\n\
 set output \"plot.png\"\n\
