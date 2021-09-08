@@ -1,5 +1,7 @@
 #! /bin/bash
 
+
+
 inputfilename=table.txt
 outputfilename=hist.txt
 column=0
@@ -10,11 +12,8 @@ do
 		i) inputfilename=${OPTARG};;
         o) outputfilename=${OPTARG};;
 		c) column=${OPTARG};;
-        t) title=${OPTARG};;
 	esac
 done
 
-#awkstatement="print \$$column"
-#echo $awkstatement
 
 cat $inputfilename | awk -v COL=$column '{ print $COL }' > $outputfilename
