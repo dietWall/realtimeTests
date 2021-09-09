@@ -1,11 +1,13 @@
 # realtimeTests
 Several Scripts for Realtime testing a Kernel
 
-This Repo contains some scripts for realtime testing a kernel
+This Repo contains some scripts for realtime testing a kernel,
+additionally some helper scripts for diagram generation, used for my master thesis
 
 Dependencies (available as debian package):  
 cyclictest (debian: rt-tests)  
-gnuplot  
+gnuplot 
+python3
 
 Scripts:  
 sched_latency.sh  
@@ -20,3 +22,13 @@ Parameters:  (default value)
 		name each output with parameters for better result management  
 
 
+extractColumn.sh
+	extracts a specific column from a file
+
+generateHist.py
+	generates a histogram from a raw data file
+
+createPlotCmd_hist.py
+	creates a plotcmd for gnuplot diagram
+	usage of generated plotcmd:
+	$gnuplot --persist < plotcmd

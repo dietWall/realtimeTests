@@ -1,10 +1,6 @@
-#! python3
+#! /usr/bin/python3
 
 import sys, getopt
-import csv
-
-
-
 
 
 def main(argv):
@@ -14,7 +10,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"i:o:")
     except getopt.GetoptError:
-        print('test.py -i <inputfile> -o <outputfile>')
+        print('generateHist.py -i <inputfile> -o <outputfile>')
         sys.exit(2)
 
 
@@ -29,7 +25,6 @@ def main(argv):
     f = open(inputfile, 'r')
     lines = f.readlines()
     numbers = list()
-
     max = 0
 
     for line in lines:
@@ -41,14 +36,15 @@ def main(argv):
     
     print("max = " + str(max))
     hist = [0]*(max+1)
-    print(len(hist))
 
     for nmb in numbers:
         hist[nmb] += 1
     
     with open(outputfile, 'w') as outfile:
+        i=0
         for nmb in hist:
-            outfile.write("%s\n" % nmb)
+            outfile.write("%s %s\n" % (i,nmb))
+            i +=1
 
 
 if __name__ == "__main__":
