@@ -28,7 +28,7 @@ parser.add_argument('--column', type=int, default=2, help='defines the data colu
 
 args=parser.parse_args()
 
-plotcmd = ('set title \"' + title + "\""+ '\n'
+plotcmd = ('set title \"' + args.title + "\""+ '\n'
         'set terminal png \n'
         'set xlabel \"' + args.xlabel + '\"\n'
         'set xrange ' + args.xrange + '\n'
@@ -42,7 +42,7 @@ plotcmd = ('set title \"' + title + "\""+ '\n'
 
 print('full command: \n' + plotcmd)
 
-cmd = open(title + '_plotcmd', 'w')
+cmd = open(args.title + '_plotcmd', 'w')
 cmd.write(plotcmd)
 cmd.close()
 
