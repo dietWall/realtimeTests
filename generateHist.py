@@ -28,7 +28,7 @@ def main(argv):
     max = 0
 
     for line in lines:
-        n=float(line[0:len(line) - 1 ])
+        n=float(line[0:len(line) - 1 ].replace('.', ''))
         i=int(n)
         numbers.append(i)
         if i > max:
