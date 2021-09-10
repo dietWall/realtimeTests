@@ -7,8 +7,9 @@ def main(argv):
     inputfile = 'max.txt'
     outputfile = 'hist.txt'
     column = 0
+    multiplier = 1.0
     try:
-        opts, args = getopt.getopt(argv,"i:o:")
+        opts, args = getopt.getopt(argv,"i:o:m:")
     except getopt.GetoptError:
         print('generateHist.py -i <inputfile> -o <outputfile>')
         sys.exit(2)
@@ -20,7 +21,10 @@ def main(argv):
             print("inputfile=" + inputfile)
         elif opt == '-o':
             outputfile = arg
-            print("outputfile=" + inputfile)
+            print("outputfile=" + outputfile)
+        elif opt == '-m':
+            multiplier=float(arg)
+            print('multiplying all values with: ' + str(multiplier))
 
     f = open(inputfile, 'r')
     lines = f.readlines()
@@ -29,6 +33,10 @@ def main(argv):
 
     for line in lines:
         n=float(line[0:len(line) - 1 ].replace('.', ''))
+        
+        if multiplier != 1.0:
+            n *= multiplier
+
         i=int(n)
         numbers.append(i)
         if i > max:
