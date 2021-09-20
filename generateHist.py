@@ -8,7 +8,7 @@ def main(argv):
     outputfile = 'hist.txt'
     column = 0
     try:
-        opts, args = getopt.getopt(argv,"i:o:")
+        opts, args = getopt.getopt(argv,"i:o:c:")
     except getopt.GetoptError:
         print('generateHist.py -i <inputfile> -o <outputfile>')
         sys.exit(2)
@@ -21,6 +21,9 @@ def main(argv):
         elif opt == '-o':
             outputfile = arg
             print("outputfile=" + inputfile)
+        elif opt == '-c':
+            column = int(arg)
+            print("selecting column" + str(column))
 
     f = open(inputfile, 'r')
     lines = f.readlines()
@@ -28,6 +31,10 @@ def main(argv):
     max = 0
 
     for line in lines:
+        
+        if column != 0:
+            line = line.split()[column]
+
         n=float(line[0:len(line) - 1 ])
         i=int(n)
         numbers.append(i)
