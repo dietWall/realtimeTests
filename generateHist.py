@@ -9,9 +9,9 @@ def main(argv):
     column = 0
     multiplier = 1.0
     try:
-        opts, args = getopt.getopt(argv,"i:o:m:")
+        opts, args = getopt.getopt(argv,"i:o:m:c:")
     except getopt.GetoptError:
-        print('generateHist.py -i <inputfile> -o <outputfile>')
+        print('generateHist.py -i <inputfile> -o <outputfile> -m <Faktor(float)> -c <Column(int)>')
         sys.exit(2)
 
 
@@ -32,11 +32,15 @@ def main(argv):
     max = 0
 
     for line in lines:
+               
+        if column != 0:
+            line = line.split()[column]
+
         n=float(line[0:len(line) - 1 ].replace('.', ''))
-        
+
         if multiplier != 1.0:
             n *= multiplier
-
+        
         i=int(n)
         numbers.append(i)
         if i > max:
